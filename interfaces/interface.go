@@ -29,12 +29,12 @@ type rectangle struct {
 	bradth float64
 }
 
-func (c *circle) area() float64 {
+func (c circle) area() float64 {
 
 	return 3.14 * c.radius * c.radius
 }
 
-func (r *rectangle) area() float64 {
+func (r rectangle) area() float64 {
 
 	return r.length * r.bradth
 }
@@ -46,7 +46,14 @@ func (ms myString) area() float64 {
 	return float64(len(ms))
 }
 
-func assert(i interface{}) interface{} {
+// # Polymorphism
+// * In GoLang, polymorphism is achieved mainly using interfaces.
+// * A type implementing a function defined in interface becomes the type defined as an interface.
+// * Polymorphism is used to reduce code in general
+// * A single function can be used to do the same thing on multiple different objects.
+// * Go not being a strict OO-language achieves polymorphism in an elegant way
+
+func assert(i Geometry) interface{} {
 
 	switch i.(type) {
 	case myString:

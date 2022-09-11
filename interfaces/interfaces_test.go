@@ -15,7 +15,6 @@ func TestArea(t *testing.T) {
 		length: 4,
 		bradth: 5,
 	}
-	var myint int = 10
 	var mystring myString = "StirngValue"
 	fmt.Printf("area of a cirlce of radius %f is %f \n", c.radius, c.area())
 
@@ -26,6 +25,5 @@ func TestArea(t *testing.T) {
 	fmt.Println(assert(c))
 	fmt.Println(assert(r))
 	fmt.Println(assert(mystring))
-	fmt.Println(assert(myint))
 
 }
