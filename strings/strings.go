@@ -1,11 +1,12 @@
 package strings
 
-import "fmt"
+import (
+	"fmt"
+)
 
 // Array
 // * Array are of fixed size ex type Array []int
 // * The most common purpose of Array  in Go is to hold storage for a slice
-
 
 // Slice
 // * A slice is a data structure describing a contiguous section of an array stored separately from the slice variable itself
@@ -28,9 +29,6 @@ type sliceHeader struct {
 //     ZerothElement: &buffer[100],
 // }
 
-
-
-
 // Strings
 // * In Go, a string is in effect a read-only slice of bytes
 // * A "string literal" is a sequence of characters from the source character set enclosed in double quotation marks
@@ -40,12 +38,9 @@ type sliceHeader struct {
 // * fmt.Sprintf("%s %s", string1, string2)
 // * String are immutable  to mutate a string first we have to convert it into a slice of rune and mutate it and convert back to string
 
-
 // Note: Difference between a byte, a character, and a rune, the difference between Unicode and UTF-8, the difference between a string and a string literal.
 // Symbol:   A 65(dec)   41(Hex) ,     Z   90(Dec)    5A(Hex)
 // Symbol:   a  97(dec)    61(Hex),      z.   122(Dex)  7A(Hex)
-
-
 
 // Rune
 // * A rune is a builtin type in Go and it's the alias of int32. Rune represents a Unicode code point in Go
@@ -59,6 +54,13 @@ func charsAndBytePosition(s string) {
 	}
 }
 
+func PrintAtoZ() {
 
+	for ch := 'a'; ch <= 'z'; ch++ {
+		fmt.Printf("%c   ", ch)
+	}
 
+	// fmt.Println(reflect.TypeOf(ch))
+}
 
+// use unicode to detect upper and lowercase of characters

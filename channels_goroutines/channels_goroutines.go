@@ -19,8 +19,8 @@ import (
 func main() {
 	// channelExample()
 	// selectExample()
-	// PrintForTenSeconds()
-	PrintAtInterfal()
+	 PrintForTenSeconds()
+	//PrintAtInterfal()
 
 }
 
