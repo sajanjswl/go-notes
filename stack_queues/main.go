@@ -1,59 +1,36 @@
 package main
 
-import "fmt"
-
 type stack struct {
-	items []int
+	array []int
 }
 
-type queue struct {
-	items []int
+func (s *stack) Push(a int) {
+	s.array = append(s.array, a)
 }
-
-func (q *queue) Enqueue(v int) {
-
-	q.items = append(q.items, v)
-
-}
-
-func (q *queue) Dequeue() int {
-	itemsToBeRemoved := q.items[0]
-	q.items = q.items[1:]
-	return itemsToBeRemoved
-}
-
-func (s *stack) Push(v int) {
-
-	s.items = append(s.items, v)
-
-}
-
 func (s *stack) Pop() int {
-	l := len(s.items) - 1
+	popedItem := s.array[len(s.array)-1]
 
-	toBeRemoved := s.items[l]
-	s.items = s.items[:l]
-	return toBeRemoved
+	s.array = s.array[:len(s.array)-1]
+	return popedItem
+}
+
+type Queue struct {
+	array []int
+}
+
+func (q *Queue) Add(n int) {
+	q.array = append(q.array, n)
+}
+
+func (q *Queue) DeQueue() int {
+	var dequedItem int
+	if len(q.array) >= 0 {
+		dequedItem = q.array[0]
+		q.array = q.array[1:]
+	}
+	return dequedItem
 }
 
 func main() {
 
-	// stack1 := &stack{}
-	// for i := 1; i < 5; i++ {
-	// 	stack1.Push(i)
-	// }
-	// fmt.Println(stack1)
-
-	// fmt.Println("Printing popped items", stack1.Pop())
-	// fmt.Println("Printing stack", stack1)
-
-	q := &queue{}
-
-	for i := 1; i < 5; i++ {
-		q.Enqueue(i)
-	}
-	fmt.Println("Printing queue", q)
-
-	fmt.Println("Printing dqueu ite", q.Dequeue())
-	fmt.Println("Printing queue", q)
 }

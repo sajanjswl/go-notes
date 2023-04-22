@@ -1,33 +1,4 @@
-package main
-
-import (
-	"fmt"
-)
-
-// Single Linked List
-type Node struct {
-	Key      int
-	NextNode *Node
-}
-
-func NewNode(key int) *Node {
-
-	var node Node
-	node.Key = key
-	node.NextNode = nil
-	return &node
-}
-
-func Show(head *Node) {
-	temHead := head
-
-	for temHead != nil {
-		fmt.Println(temHead.Key)
-		temHead = temHead.NextNode
-	}
-
-}
-
+package bst
 
 // BST Create
 type BinaryNode struct {
@@ -66,25 +37,3 @@ func (n *BinaryNode) insert(data int64) {
 		}
 	}
 }
-
-func main() {
-	head := NewNode(1)
-	tempHead := head
-	for i := 2; i < 10; i++ {
-		if tempHead.NextNode == nil {
-			tempHead.NextNode = NewNode(i)
-		}
-		tempHead = tempHead.NextNode
-
-	}
-
-	Show(head)
-}
-
-
-
-
-
-
-
-

@@ -63,4 +63,91 @@ func PrintAtoZ() {
 	// fmt.Println(reflect.TypeOf(ch))
 }
 
-// use unicode to detect upper and lowercase of characters
+// commons strings method
+// strings.Compare(), Contains, Replaces, ToLower, ToUpper, Split
+
+//Important Questions
+// 1.) Longest substring without dubplication
+
+type substring struct {
+	left  int
+	right int
+}
+
+func (ss substring) length() int {
+	return ss.right - ss.left
+}
+
+func LongestSubstringWithoutDuplication(str string) string {
+	lastSeen := map[rune]int{}
+	longest := substring{0, 1}
+	startIndex := 0
+
+	for i, char := range str {
+
+		seenIndex, found := lastSeen[char]
+		if found && startIndex < seenIndex+1 {
+			startIndex = seenIndex + 1
+		}
+		if longest.length() < i+1-startIndex {
+			longest = substring{startIndex, i + 1}
+		}
+		lastSeen[char] = i
+	}
+	// Write your code here.
+	return str[longest.left:longest.right]
+}
+
+// 2. Longest Palindrome string in a string
+
+func LongestPalindromicSubstring(str string) string {
+
+	longest := ""
+
+	for i, _ := range str {
+
+		for j := i; j < len(str); j++ {
+			substring := str[i : j+1]
+			if len(substring) > len(longest) && isPlaindrome(substring) {
+				longest = substring
+			}
+		}
+	}
+	// Write your code here.
+	return longest
+}
+
+func isPlaindrome(str string) bool {
+
+	for i := range str {
+		j := len(str) - i - 1
+		if str[i] != str[j] {
+			return false
+		}
+	}
+
+	return true
+}
+
+// 3. Longest common Subsequence of two strings
+
+func lcs(a, b string) (output string) {
+	lengths := make([]int, len(a)*len(b))
+	greatestLength := 0
+	for i, x := range a {
+		for j, y := range b {
+			if x == y {
+				if i == 0 || j == 0 {
+					lengths[i*len(b)+j] = 1
+				} else {
+					lengths[i*len(b)+j] = lengths[(i-1)*len(b)+j-1] + 1
+				}
+				if lengths[i*len(b)+j] > greatestLength {
+					greatestLength = lengths[i*len(b)+j]
+					output = a[i-greatestLength+1 : i+1]
+				}
+			}
+		}
+	}
+	return
+}
